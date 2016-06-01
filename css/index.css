@@ -6,3 +6,26 @@ body{
 #info{
     padding: 5% 0 0 0;
 }
+
+img {
+    height: 100%; 
+    width: 100%; 
+    /*max-width: 100%;*/
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 1000px) {
+    .left {
+        display: block;
+    }
+    .right {
+        display: block;
+        width: auto;
+    }
+    .right .color-wrap {
+        display: block;
+        width: auto;
+        color: yellow;
+    }
+}
