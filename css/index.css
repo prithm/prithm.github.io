@@ -1,4 +1,4 @@
-#imaginary_container{
+/*#imaginary_container{
     margin:5% 0 5% 0; 
 }
 .stylish-input-group .input-group-addon{
@@ -13,12 +13,15 @@
     border:0;
     background:transparent;
 }
+*/
 
 body{
-	background: #908C8C;
+   background-image:url("resources/background.jpg");
+   background-size:cover;
+   background-repeat:no-repeat;
 }
 
-.search-result {
+/*.search-result {
 	margin: 2px;
 }
 
@@ -26,8 +29,8 @@ body{
     margin-bottom: 0;
     color: #1E0FBE;
 }
-
-.search-result .search-link {
+*/
+/*.search-result .search-link {
     color: #006621;
 }
 
@@ -55,4 +58,4 @@ body{
 
 #navBar {
 	background-color: #e7e7e7;
-}
+}*/
