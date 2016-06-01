@@ -23,14 +23,17 @@ img {
 
     .left {
         display: block;
+        text-align: left;
     }
     .right {
         display: block;
         width: auto;
+        margin-top: 5%;
     }
     .right .color-wrap {
         display: block;
         width: auto;
         color: yellow;
+        margin-top: 5%;
     }
 }
