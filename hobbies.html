@@ -86,7 +86,22 @@
     max-width: 560px;
     color: var(--text-dim);
     font-size: 1.02rem;
+    margin-bottom: 1.6rem;
   }
+  .links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+  }
+  .btn.ghost { color: var(--text); }
+  .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
 
   section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
   section:last-of-type { border-bottom: none; }
@@ -160,6 +175,9 @@
         Outside of shipping code, I'm usually on a trail, finding my way around a new city,
         or trying to get the shot right. A few things that keep the week-to-week interesting.
       </p>
+      <div class="links">
+        <a class="btn ghost" href="https://www.instagram.com/low.key.traveller" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
     </div>
     <div class="hero-photo">
       <img src="assets/photo.jpg" alt="Prithwish Mukherjee on a mountain overlook">
