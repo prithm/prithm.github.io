@@ -144,6 +144,8 @@
   }
   .logo-chip svg, .logo-chip img { width: 100%; height: 100%; object-fit: contain; }
   .logo-chip.wide { width: 96px; padding: 7px 10px; }
+  .logo-chip.flush { padding: 0; overflow: hidden; }
+  .logo-chip.flush img { object-fit: cover; }
   .job-body { min-width: 0; flex: 1; }
   .job .role-line {
     display: flex;
@@ -384,8 +386,8 @@
     <h2><span class="tag">02</span>Education</h2>
     <div class="grid-2">
       <div class="card">
-        <div class="logo-chip wide" aria-hidden="true">
-          <img src="assets/logos/gatech.svg" alt="">
+        <div class="logo-chip" aria-hidden="true">
+          <img src="assets/logos/gatech.png" alt="">
         </div>
         <div>
           <div class="deg">M.S. in Computer Science</div>
@@ -393,8 +395,8 @@
         </div>
       </div>
       <div class="card">
-        <div class="logo-chip" aria-hidden="true">
-          <img src="assets/logos/iitkgp.svg" alt="">
+        <div class="logo-chip flush" aria-hidden="true">
+          <img src="assets/logos/iitkgp.png" alt="">
         </div>
         <div>
           <div class="deg">B.Tech (Honours), Computer Science &amp; Engineering</div>
