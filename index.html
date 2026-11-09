@@ -1,64 +1,399 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
- 
+<html lang="en">
 <head>
-    <title>PrithM</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/index.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prithwish Mukherjee</title>
+<meta name="description" content="Prithwish Mukherjee — Tech Lead at Google DeepMind. Model serving, reliability, and evaluation infrastructure for Gemini.">
+<style>
+  :root {
+    --bg: #0b0f17;
+    --bg-alt: #121926;
+    --card: #161f2e;
+    --border: #243049;
+    --text: #e8edf5;
+    --text-dim: #8b9ab3;
+    --accent: #5eead4;
+    --accent-dim: #2dd4bf;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.75rem; }
 
-    <script src="js/jquery-1.11.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+  .brand { font-weight: 700; letter-spacing: 0.01em; }
+  nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 0.92rem;
+  }
+  nav a:hover { color: var(--accent); }
+
+  .hero {
+    padding: 4rem 0 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  .hero-text { flex: 1 1 420px; min-width: 0; }
+  .hero-photo {
+    flex: 0 0 220px;
+    width: 220px;
+    height: 220px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 0 4px var(--bg-alt), 0 12px 30px rgba(0,0,0,0.35);
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero .eyebrow {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+  .hero .role {
+    font-size: 1.15rem;
+    color: var(--text-dim);
+    margin-bottom: 1.4rem;
+  }
+  .hero p.summary {
+    max-width: 620px;
+    color: var(--text-dim);
+    font-size: 1.02rem;
+    margin-bottom: 1.8rem;
+  }
+  .links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+  }
+  .btn.primary {
+    background: var(--accent);
+    color: #0b0f17;
+    border-color: var(--accent);
+  }
+  .btn.primary:hover { background: var(--accent-dim); }
+  .btn.ghost { color: var(--text); }
+  .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1.8rem;
+    font-weight: 700;
+  }
+  h2 .tag {
+    color: var(--accent);
+    font-family: ui-monospace, "SF Mono", monospace;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+  }
+
+  .timeline { display: flex; flex-direction: column; gap: 2rem; }
+  .job {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--border);
+  }
+  .job::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 0.35rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .job .role-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+  .job .title { font-weight: 700; font-size: 1.05rem; }
+  .job .company { color: var(--accent); font-weight: 600; }
+  .job .dates {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  .job ul { margin-top: 0.6rem; padding-left: 1.1rem; color: var(--text-dim); font-size: 0.95rem; }
+  .job li { margin-bottom: 0.4rem; }
+  .job li b, .job li strong { color: var(--text); }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem;
+  }
+  .card .deg { font-weight: 700; margin-bottom: 0.25rem; }
+  .card .inst { color: var(--accent); font-size: 0.92rem; margin-bottom: 0.4rem; }
+  .card .meta { color: var(--text-dim); font-size: 0.88rem; }
+
+  .pub-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+  .pub-list li {
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pub-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .pub-list .authors { color: var(--text); }
+  .pub-list .venue { font-style: italic; }
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    margin-left: 0.5rem;
+  }
+
+  .achv { display: flex; flex-direction: column; gap: 1rem; }
+  .achv .item { display: flex; gap: 0.8rem; align-items: flex-start; }
+  .achv .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 0.55rem; flex-shrink: 0; }
+  .achv .item div b { display: block; }
+  .achv .item div span { color: var(--text-dim); font-size: 0.92rem; }
+
+  footer {
+    padding: 2.5rem 0 3rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+  footer .links { justify-content: center; margin-bottom: 1rem; }
+
+  @media (max-width: 560px) {
+    .job .dates { margin-left: 0; }
+  }
+  @media (max-width: 680px) {
+    .hero-inner { flex-direction: column-reverse; gap: 1.8rem; text-align: center; }
+    .hero-photo { width: 160px; height: 160px; }
+    .hero .summary { margin-left: auto; margin-right: auto; }
+    .links { justify-content: center; }
+  }
+</style>
 </head>
-
 <body>
 
-<!-- 	<div>
-    
-    </div>   
- -->
-<div class='container-fluid'>
-	<div style="text-align: right; margin-bottom: 20px;">
-		<div class="btn-group" role="group" aria-label="...">
-			<button type="button" class="btn btn-default">  
-				<a href="https://in.linkedin.com/in/prithwish-mukherjee-6b0020a2" target="_blank"> 
-				  	<img src="resources/linkedin.svg" alt="LinkedIn"> 
-				</a>
-			</button>		
-			<button type="button" class="btn btn-default"><a class="resume-link" href="Resume.pdf" target="_blank">CV</a></button>
-		</div>
-	</div>
-	<div id='heading' class="well well-sm">
-		<h1>Prithwish Mukherjee</h1>
-	</div>
-	<div class='well well-lg'>
-		<div class="row">
-			<div id='displayPic' class="col-xs-4 left">
-				<img src="resources/main_pic.png" alt="Display Picture">
-			</div>
-			<div class="col-xs-8 right">
-				<div id='navBar' class='row'> 
-					<ul class="nav nav-tabs">
-					  	<li class="active"><a href="#">About Me</a></li>
-						<li><a href="academics.html">Academics</a></li>
-						<li><a href="experience.html">Experience</a></li>
-						<li><a href="achievements.html">Achievements</a></li>
-						<li><a href="publications.html">Publications</a></li>
-						<li><a href="patents.html">Patents</a></li>
-					</ul>
-				</div>
-				<div id='info'>
-					I am currently working as a Software Engineer in Google Assistant at Google Mountain View office, USA. 
-					<br>
-					My primary interests are algorithms and machine learning. My hobbies include listening to music and watching movies. <br>
-					<br>
-					Contact : <a href="mailto:pritspido@gmail.com">pritspido@gmail.com</a> <a href="mailto:prithwish.mukherjee.10058@gmail.com">prithwish.mukherjee.10058@gmail.com</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<header>
+  <div class="wrap">
+    <div class="brand">Prithwish Mukherjee</div>
+    <nav>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#work">Patents</a>
+    </nav>
+  </div>
+</header>
 
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow">Tech Lead · Google DeepMind</div>
+      <h1>Prithwish Mukherjee</h1>
+      <p class="role">Building reliability, evaluation &amp; serving infrastructure for Gemini</p>
+      <p class="summary">
+        Nearly a decade across Google and LinkedIn, working on model serving infrastructure,
+        latency &amp; cost optimization, and evaluation frameworks for conversational AI and LLM-powered
+        products — with 6 U.S. patent applications along the way.
+      </p>
+      <div class="links">
+        <a class="btn primary" href="https://www.linkedin.com/in/prithm" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn ghost" href="mailto:prithwish.mukherjee.10058@gmail.com">Email</a>
+        <a class="btn ghost" href="https://hackernoon.com/u/pmukherjee" target="_blank" rel="noopener">Hacker Noon ↗</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/photo.jpg" alt="Prithwish Mukherjee">
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2><span class="tag">01</span>Experience</h2>
+    <div class="timeline">
+
+      <div class="job">
+        <div class="role-line">
+          <span class="title">Tech Lead</span>
+          <span class="company">Google DeepMind</span>
+          <span class="dates">Oct 2024 — Present</span>
+        </div>
+        <ul>
+          <li>Established a foundational quality framework — now the standard for all Gemini Devices launches — leading a group of 6 engineers, unblocking launches across Android Auto, Watches, Google Maps and other form factors.</li>
+          <li>Own model serving infrastructure and internal monitoring dashboards for GCP, Search, Gemini App, and Research.</li>
+          <li>Cut TPU cost by <b>more than 50%</b> for specific verticals through latency and cost optimization of user-facing Gemini responses.</li>
+          <li>Built a scalable metrics instrumentation mechanism that reduced reliability effort per surface from <b>12 weeks to 2 weeks</b>.</li>
+          <li>Authored a lightweight model rollout process that cut rollout time from months to weeks.</li>
+          <li>Built an LLM-powered automated user pain point detection platform processing <b>50K+ reports/day</b>.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="role-line">
+          <span class="title">Senior Software Engineer</span>
+          <span class="company">Google</span>
+          <span class="dates">May 2022 — Sept 2024</span>
+        </div>
+        <ul>
+          <li>Led a multi-quarter latency reduction effort (3 engineers), cutting end-to-end user latency by <b>35%</b>.</li>
+          <li>Led implementation of a device-agnostic framework to measure and identify reliability issues for conversational AI agents.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="role-line">
+          <span class="title">Software Engineer</span>
+          <span class="company">Google</span>
+          <span class="dates">Mar 2021 — May 2022</span>
+        </div>
+        <ul>
+          <li>Owned logging infrastructure, analysis and reliability tools for Google Assistant in Automobiles.</li>
+          <li>Ideated and built infrastructure to generate device-agnostic metrics for conversational AI agents serving <b>100M+ queries/day</b>.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="role-line">
+          <span class="title">Software Engineer</span>
+          <span class="company">Google India</span>
+          <span class="dates">Nov 2018 — Mar 2021</span>
+        </div>
+        <ul>
+          <li>Built Google Assistant features for emerging markets, showcased at MWC 2019.</li>
+          <li>Ideated and built a COVID information portal for low-cost feature phones in India, used by <b>350,000 users/day</b> and featured in a Google blog post.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="role-line">
+          <span class="title">Software Engineer</span>
+          <span class="company">LinkedIn India</span>
+          <span class="dates">Jul 2016 — Nov 2018</span>
+        </div>
+        <ul>
+          <li>Member of the content classification team (patent) and the global privacy team.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2><span class="tag">02</span>Education</h2>
+    <div class="grid-2">
+      <div class="card">
+        <div class="deg">M.S. in Computer Science</div>
+        <div class="inst">Georgia Institute of Technology</div>
+        <div class="meta">CGPA: 3.5 / 4.0</div>
+      </div>
+      <div class="card">
+        <div class="deg">B.Tech (Honours), Computer Science &amp; Engineering</div>
+        <div class="inst">Indian Institute of Technology, Kharagpur</div>
+        <div class="meta">CGPA: 9.75 / 10 — Highest GPA in the graduating class</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2><span class="tag">03</span>Achievements</h2>
+    <div class="achv">
+      <div class="item">
+        <div class="dot"></div>
+        <div><b>President of India Gold Medal</b><span>Highest academic grade (9.75/10) among all graduating students, Class of 2016, IIT Kharagpur</span></div>
+      </div>
+      <div class="item">
+        <div class="dot"></div>
+        <div><b>Best Undergraduate Thesis Award</b><span>Dept. of Computer Science and Engineering, IIT Kharagpur</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2><span class="tag">04</span>Patents &amp; Publications</h2>
+    <ul class="pub-list">
+      <li><span class="authors">Mukherjee, P.</span> (2025). "Continuous Generative Model Output Validation By Comparing Contextual And Context Free Results." U.S. Patent Application No. 19/367,355.<span class="badge">Patent Pending</span></li>
+      <li><span class="authors">Das, S.L., Mukherjee, P., Kuang, H., &amp; Gupta, P.K.</span> (2025). "AI driven user centric software quality improvement." U.S. Patent Application No. 19/195,428.<span class="badge">Patent Pending</span></li>
+      <li><span class="authors">Das, S.L., Mukherjee, P., Gupta, P.K., Sheng, X., Huang, Z., &amp; Sparber, A.</span> (2024). "Device Agnostic Framework to Measure Reliability During User Interactions." U.S. Patent Application No. 18/642,318.</li>
+      <li><span class="authors">Mukherjee, P., Rajayogam, S.</span> (2022). "Standardizing Analysis Metrics Across Multiple Devices." U.S. Patent Application No. 17/869,485.</li>
+      <li><span class="authors">Mukherjee, P., Hussain, S.Z., Gupta, A., Kumar, S., &amp; Kakkar, S.</span> (2020). "Self-serve content classification platform." U.S. Patent Application No. 16/369,554.</li>
+      <li><span class="authors">Sanyal, A., Datta, G., Mukherjee, P., Chinchali, S.P., &amp; Orshansky, M.</span> (2026). "EntroLLM: Entropy Encoded Weight Compression for Efficient Large Language Model Inference on Edge Devices." <span class="venue">IEEE ICASSP 2026</span>, Barcelona, Spain.</li>
+      <li><span class="authors">Patro, J., Samanta, B., Singh, S., Basu, A., Mukherjee, P., Choudhury, M., &amp; Mukherjee, A.</span> (2017). "All that is English may be Hindi: Enhancing language identification through automatic ranking of the likeliness of word borrowing in social media." <span class="venue">EMNLP 2017</span>.</li>
+      <li><span class="authors">Sarkar, A., Reiger, R., Chatterjee, D., Patranabis, S., Singh, H., &amp; Mukherjee, P.</span> (2016). "Simulation study of a constant time hybrid approach for large scale terrain mapping using satellite stereo imagery." <span class="venue">Robotics and Autonomous Systems, 79, 132-146</span>.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a class="btn ghost" href="https://www.linkedin.com/in/prithm" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn ghost" href="mailto:prithwish.mukherjee.10058@gmail.com">Email</a>
+      <a class="btn ghost" href="https://hackernoon.com/u/pmukherjee" target="_blank" rel="noopener">Hacker Noon ↗</a>
+    </div>
+    &copy; 2026 Prithwish Mukherjee
+  </div>
+</footer>
 
 </body>
-
+</html>
