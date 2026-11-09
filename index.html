@@ -207,6 +207,26 @@
   .achv .item div b { display: block; }
   .achv .item div span { color: var(--text-dim); font-size: 0.92rem; }
 
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 1.6rem;
+  }
+  .hobby-card .icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+  .hobby-card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+  .hobby-card p { color: var(--text-dim); font-size: 0.9rem; }
+  .more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+  .more-link:hover { color: var(--accent-dim); }
+
   footer {
     padding: 2.5rem 0 3rem;
     text-align: center;
@@ -235,6 +255,7 @@
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
       <a href="#work">Patents</a>
+      <a href="hobbies.html">Hobbies</a>
     </nav>
   </div>
 </header>
@@ -380,6 +401,30 @@
       <li><span class="authors">Patro, J., Samanta, B., Singh, S., Basu, A., Mukherjee, P., Choudhury, M., &amp; Mukherjee, A.</span> (2017). "All that is English may be Hindi: Enhancing language identification through automatic ranking of the likeliness of word borrowing in social media." <span class="venue">EMNLP 2017</span>.</li>
       <li><span class="authors">Sarkar, A., Reiger, R., Chatterjee, D., Patranabis, S., Singh, H., &amp; Mukherjee, P.</span> (2016). "Simulation study of a constant time hybrid approach for large scale terrain mapping using satellite stereo imagery." <span class="venue">Robotics and Autonomous Systems, 79, 132-146</span>.</li>
     </ul>
+  </div>
+</section>
+
+<section id="hobbies">
+  <div class="wrap">
+    <h2><span class="tag">05</span>Outside Work</h2>
+    <div class="grid-3">
+      <div class="card hobby-card">
+        <div class="icon">⛰️</div>
+        <h3>Hiking</h3>
+        <p>Weekend trails and the occasional summit — the best reset from a week of shipping code.</p>
+      </div>
+      <div class="card hobby-card">
+        <div class="icon">✈️</div>
+        <h3>Travel</h3>
+        <p>New cities and cultures, one trip at a time — travel keeps perspective fresh.</p>
+      </div>
+      <div class="card hobby-card">
+        <div class="icon">📷</div>
+        <h3>Amateur Photography</h3>
+        <p>Camera in the backpack on every hike and trip — mostly landscapes and moments along the way.</p>
+      </div>
+    </div>
+    <a class="more-link" href="hobbies.html">More on hiking, travel &amp; photography →</a>
   </div>
 </section>
 
